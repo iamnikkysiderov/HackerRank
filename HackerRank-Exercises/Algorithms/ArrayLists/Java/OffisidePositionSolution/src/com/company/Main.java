@@ -17,9 +17,9 @@ public class Main {
     public static List<Integer> GetTeamCoordinates() {
         Scanner scanner = new Scanner(System.in);
 
-        String firstLine = scanner.nextLine();
+        String input = scanner.nextLine();
 
-        List<Integer> team = ParseInputToIntegerArray(firstLine);
+        List<Integer> team = ParseInputToIntegerArray(input);
 
         return team;
     }
@@ -41,8 +41,8 @@ public class Main {
         int minValueFirstTeam = FindMinValueCoordinatesFirstTeam(firstTeam);
         int minValueSecondTeam = FindMinValueCoordinatesSecondTeam(secondTeam);
 
-        Boolean firstCase = TestFirstCase(maxValueFirstTeam, maxValueSecondTeam);
-        Boolean secondCase = TestSecondCase(minValueSecondTeam, minValueFirstTeam);
+        Boolean firstCase = TestFirstCaseForOffside(maxValueFirstTeam, maxValueSecondTeam);
+        Boolean secondCase = TestSecondCaseForOffside(minValueSecondTeam, minValueFirstTeam);
 
         if (firstCase) {
             return true;
@@ -124,7 +124,7 @@ public class Main {
         return minValue;
     }
 
-    public static Boolean TestFirstCase(int maxValueFirstTeam, int maxValueSecondTeam) {
+    public static Boolean TestFirstCaseForOffside(int maxValueFirstTeam, int maxValueSecondTeam) {
         if (maxValueFirstTeam > maxValueSecondTeam) {
             return true;
         }
@@ -132,7 +132,7 @@ public class Main {
         return false;
     }
 
-    public static Boolean TestSecondCase(int minValueSecondTeam, int minValueFirstTeam) {
+    public static Boolean TestSecondCaseForOffside(int minValueSecondTeam, int minValueFirstTeam) {
         if (minValueSecondTeam < minValueFirstTeam) {
             return true;
         }
