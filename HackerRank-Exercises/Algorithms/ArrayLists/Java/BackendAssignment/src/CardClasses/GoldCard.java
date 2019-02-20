@@ -20,8 +20,8 @@ public class GoldCard implements ICard {
     }
 
     public Double initialDiscountRate() {
-        if (CheckNumberDigits(this.turnoverPreviousMonth)) {
-            if (DoubleCheckNumberForDigits(this.turnoverPreviousMonth)) {
+        if (CheckNumberForThreeDigits(this.turnoverPreviousMonth)) {
+            if (CheckNumberForMoreThanThreeDigits(this.turnoverPreviousMonth)) {
                 Double result = Double.parseDouble(this.turnoverPreviousMonth.toString().substring(0, 1) + "0");
                 return result;
             }
@@ -35,7 +35,7 @@ public class GoldCard implements ICard {
         }
     }
 
-    private static Boolean CheckNumberDigits(Double value) {
+    private static Boolean CheckNumberForThreeDigits(Double value) {
         if (value.toString().contains(".")) {
             if (value.toString().split("\\.")[0].length() >= 3) {
                 return true;
@@ -54,7 +54,7 @@ public class GoldCard implements ICard {
         }
     }
 
-    private static Boolean DoubleCheckNumberForDigits(Double value) {
+    private static Boolean CheckNumberForMoreThanThreeDigits(Double value) {
         if (value.toString().contains(".")) {
             if (value.toString().split("\\.")[0].length() >= 4) {
                 return true;

@@ -28,6 +28,21 @@ public class Main {
         return input;
     }
 
+    public static void outputPayDeskValues(String[] input) {
+        ICard card = determineCardType(input);
+
+        if (card != null) {
+            Double purchaseValue = Double.parseDouble(input[3]);
+
+            PayDesk payDesk = new PayDesk(purchaseValue, card);
+
+            System.out.printf("Purchase value: %.2f" + System.lineSeparator(), payDesk.totalPurchaseValue());
+            System.out.printf("Discount rate: %.2f" + System.lineSeparator(), payDesk.discountRate());
+            System.out.printf("Discount: %.2f" + System.lineSeparator(), payDesk.discount());
+            System.out.printf("Total: %.2f" + System.lineSeparator(), payDesk.totalPrice());
+        }
+    }
+
     public static ICard determineCardType(String[] input) {
         ICard card;
         String cardType = input[0];
@@ -46,24 +61,5 @@ public class Main {
         }
 
         return card;
-    }
-
-    public static void outputPayDeskValues(String[] input) {
-        ICard card = determineCardType(input);
-
-        if (card != null) {
-            Double purchaseValue = Double.parseDouble(input[3]);
-
-            PayDesk payDesk = new PayDesk(purchaseValue, card);
-
-            System.out.printf("Purchase value: %.2f", payDesk.totalPurchaseValue());
-            System.out.println();
-            System.out.printf("Discount rate: %.2f", payDesk.discountRate());
-            System.out.println();
-            System.out.printf("Discount: %.2f", payDesk.discount());
-            System.out.println();
-            System.out.printf("Total: %.2f", payDesk.totalPrice());
-            System.out.println();
-        }
     }
 }
